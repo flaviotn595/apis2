@@ -244,6 +244,23 @@ router.get('/others/tradutor', async(req, res, next) => {
   })
 })
 
+router.get('/others/fazernick', async(req, res, next) => {
+  cdapikey = req.query.apikey
+  nome = req.query.nome
+ if(!cdapikey) return res.json(resposta.semkey)
+  if(cdapikey !== key) return res.sendFile(keyinvalida)
+  if (!nome) return res.json({ status : false, criador : `criador`, mensagem : "Coloque Um Nome Valido"})
+  fetch(`http://aleatoryapi.herokuapp.com/api/fazernick?nome=${nome}&apikey=ale203`)
+  .then(e => e.json())
+  .then(e => {
+    res.json({
+      status: true,
+      código: 404,
+      criador: `${criador}`,
+      resultado: `${e[1]}`,
+    })
+    })})
+
     router.get('/download/mediafire', async(req, res, next) => {
       cdapikey = req.query.apikey
       link = req.query.link
