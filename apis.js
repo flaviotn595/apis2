@@ -268,16 +268,16 @@ router.get('/others/fazernick', async(req, res, next) => {
           nick8: `${e[8]}`,
           nick9: `${e[9]}`,
           nick10: `${e[10]}`,
-          nick10: `${e[11]}`,
-          nick10: `${e[12]}`,
-          nick10: `${e[13]}`,
-          nick10: `${e[14]}`,
-          nick10: `${e[15]}`,
-          nick10: `${e[16]}`,
-          nick10: `${e[17]}`,
-          nick10: `${e[18]}`,
-          nick10: `${e[19]}`,
-          nick10: `${e[20]}`
+          nick11: `${e[11]}`,
+          nick12: `${e[12]}`,
+          nick13: `${e[13]}`,
+          nick14: `${e[14]}`,
+          nick15: `${e[15]}`,
+          nick16: `${e[16]}`,
+          nick17: `${e[17]}`,
+          nick18: `${e[18]}`,
+          nick19: `${e[19]}`,
+          nick20: `${e[20]}`
         }
       }
     )
