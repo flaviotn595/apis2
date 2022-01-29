@@ -257,8 +257,20 @@ router.get('/others/fazernick', async(req, res, next) => {
       status: true,
       código: 404,
       criador: `${criador}`,
-      resultado: `${e[1]}`,
-    })
+      resultado: {
+          nick1: `${e[1]}`,
+          nick2: `${e[2]}`,
+          nick3: `${e[3]}`,
+          nick4: `${e[4]}`,
+          nick5: `${e[5]}`,
+          nick6: `${e[6]}`,
+          nick7: `${e[7]}`,
+          nick8: `${e[8]}`,
+          nick9: `${e[9]}`,
+          nick10: `${e[10]}`
+        }
+      }
+    )
     })})
 
     router.get('/download/mediafire', async(req, res, next) => {
