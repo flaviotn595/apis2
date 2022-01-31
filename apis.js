@@ -92,27 +92,27 @@ function getRandom(nans) {
    res.send(resposta.error)
    }
    })
-  router.get('/other/*', async (req, res) => {
+  router.get('/canvas/*', async (req, res) => {
   var cdapikey = req.query.apikey;
    let { url, texto } = req.query
    try {
    if(!cdapikey) return res.json(resposta.semkey)
   	if(cdapikey !== key) return res.sendFile(keyinvalida)
   switch(req.path.replace(/\/canvas/, '').toLowerCase()) {
- case '/other/trigger':
+ case '/canvas/trigger':
  case '/trigger/':
   if (!url) return res.status(408).send(resposta.cdimg)
   res.type('gif')
   res.send(await canvacord.trigger(url))
  break
- case '/other/changemymind':
- case '/other/changemymind/':
+ case '/canvas/changemymind':
+ case '/canvas/changemymind/':
   if (!texto) return res.status(408).send(resposta.cdimg)
   res.type('jpg')
   res.send(await canvacord.changemymind(texto))
   break
- case '/other/clyde':
- case '/other/clyde/':
+ case '/canvas/clyde':
+ case '/canvas/clyde/':
   if (!texto) return res.status(408).send(resposta.cdimg)
   res.type('jpg')
   res.send(await canvacord.clyde(texto))
@@ -327,7 +327,7 @@ router.get('/others/fazernick', async(req, res, next) => {
              if(!cdapikey) return res.json(resposta.semkey)
               if(cdapikey !== key) return res.sendFile(keyinvalida)
               if (!cpf) return res.json({ status : false, criador : `criador`, mensagem : "Coloque Um Cpf Valido"})
-              fetch(`https://ws.hubdodesenvolvedor.com.br/v2/cpf/?cpf=${cpf}&data=23/03/2985_formato_pt_br&token=117761025zGYxqvLwal212613960`)
+              fetch(`https://ws.hubdodesenvolvedor.com.br/v2/cpf/?cpf=${cpf}&data=23/03/2985_formato_pt_br&token=117803075TWyOZwSkYd212689880`)
               .then(e => e.json())
               .then(e => {
                 res.json({
