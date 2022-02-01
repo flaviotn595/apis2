@@ -31,7 +31,7 @@ exports.fetchJson = fetchJson = (url, options) => new Promise(async (resolve, re
       })
 })
 
-var criador = ['lzmodsoficial']; // Nome do criador
+var criador = ['lzmods']; // Nome do criador
 var key = 'lzmods' //apikey das apis
 
 resposta = { //MSG DE ERRO NO SERVIDOR
