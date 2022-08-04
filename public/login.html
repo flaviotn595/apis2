@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="estilo.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login JS</title>
+</head>
+<body>
+    
+    <form>
+<div class="container">
+<div class="center">
+        <h2>Login</h2>
+        <img class="img-xs rounded-circle " src="logo.png" alt="">
+        <div class="input-field">
+        <input type="text" placeholder="Usuario" required id="login">
+        </div>
+        <br>
+        <div class="input-field">
+        <input type="password" placeholder="senha" required id="senha">
+        <br>
+        <br>
+        <button type="submit" onclick="logar(); return false">Enviar</button>
+                <p><a href="https://youtu.be/7FgJ6m-Ltb0">Canal para Senha!</p>
+        </div>
+</div>
+</div>
+    </form>
+
+
+    <script>
+
+
+        function logar(){
+
+            var login = document.getElementById('login').value;
+            var senha = document.getElementById('senha').value;
+
+            if(login == "Admin" && senha == "1234"){
+                location.href = "home.html";
+            }else{
+                location.href = "nãoexiste.html";
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
