@@ -10,4 +10,8 @@ var senha = document.getElementById('senha').value;
     if(login == "1234" && senha == "1234"){
                 location.href = "home.html";
     }
+
+    if(login == "DModZ" && senha == "holapapu132"){
+                location.href = "home.html";
+    }
 }
