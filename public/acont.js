@@ -7,15 +7,11 @@ var senha = document.getElementById('senha').value;
                 location.href = "home.html";
     }
     
-    if(login == "1234" && senha == "1234"){
+    if(login == "KazeDevID" && senha == "Kaze123"){
                 location.href = "home.html";
     }
 
     if(login == "DModZ" && senha == "holapapu132"){
-                location.href = "home.html";
-    }
-
-    if(login == "KazeDevID" && senha == "Kaze123"){
                 location.href = "home.html";
     }
 }
