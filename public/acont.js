@@ -14,4 +14,7 @@ var senha = document.getElementById('senha').value;
     if(login == "DModZ" && senha == "holapapu132"){
                 location.href = "home.html";
     }
+    if(login == "ts3010" && senha == "1866"){
+                location.href = "home.html";
+    }
 }
