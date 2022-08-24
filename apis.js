@@ -761,7 +761,7 @@ texto2 = req.query.texto2
 
  router.get('/textpro/neon3d-logo', async(req, res, next) => {
   var cdapikey = req.query.apikey;
-  let { texto } = req.query
+  let { texto } = req.query.texto
  if(!cdapikey) return res.json(resposta.semkey)
   if(cdapikey !== key) return res.sendFile(keyinvalida)
   if (!texto) return res.json({ status : false, criador : `criador`, mensagem : "Coloque Um Texto Valido"})
