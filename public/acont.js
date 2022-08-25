@@ -6,6 +6,10 @@ var senha = document.getElementById('senha').value;
     if(login == "Admin" && senha == "1234"){
                 location.href = "home.html";
     }
+
+    if(login == "KevinMaster" && senha == "Mj14141414"){
+                location.href = "home.html";
+    }
     
     if(login == "KazeDevID" && senha == "Kaze123"){
                 location.href = "home.html";
