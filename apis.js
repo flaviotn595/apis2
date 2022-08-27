@@ -31,8 +31,8 @@ exports.fetchJson = fetchJson = (url, options) => new Promise(async (resolve, re
       })
 })
 
-var criador = ['JerfinhoPro']; // Nome do criador
-var key = 'jerfinho' //apikey das apis
+var criador = ['JG-Bots']; // Nome do criador
+var key = 'jg' //apikey das apis
 
 resposta = { //MSG DE ERRO NO SERVIDOR
     semkey: {
