@@ -174,6 +174,18 @@ resultado: akk
 })}).catch(e => {
 res.sendFile(error)})})
 
+router.all('/tools/emojimix', async (req, res) => {
+apikey = req.query.apikey;
+e1 = req.query.emoji1;
+e2 = req.query.emoji2;
+if(apikey !== key) return res.sendFile(keyinexistente)
+if (!e1) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: EMOJI1"})
+if (!e2) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: EMOJI2"})
+emojimix_api = `https://infinitybot-api.herokuapp.com/api/lzcanvas/emojimix?emoji1=${e1}&emoji2=${e2}&apikey=lz`
+res.type('png')
+res.send(await getBuffer(emojimix_api))
+})
+
  router.get('/yt/playlink/mp4', async(req, res, next) => {
  var cdapikey = req.query.apikey;
  link = req.query.link          
