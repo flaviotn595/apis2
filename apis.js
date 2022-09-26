@@ -31,7 +31,7 @@ exports.fetchJson = fetchJson = (url, options) => new Promise(async (resolve, re
       })
 })
 
-var criador = ['JG-Bots']; // Nome do criador
+var criador = ['jg-bots']; // Nome do criador
 var key = 'jg' //apikey das apis
 
 resposta = { //MSG DE ERRO NO SERVIDOR
@@ -159,80 +159,68 @@ if(!cdapikey) return res.json(resposta.semkey)
  })
 
  router.get('/yt/playlink/mp3', async(req, res, next) => {
- apikey = req.query.apikey;
- link = req.query.link
-if(apikey !== key) return res.sendFile(keyinexistente)
-if (!link) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: LINK"})
-PlayLinkMP3(link).then((resultado) => {
- res.json({
- status: true,
- código: 200,
- criador: `${criador}`,
- resultado: resultado
- })}).catch(e => {
-res.json({
- msg: `erro no servidor interno`
- })})})
-
- router.get('/youtube/pesquisar', async(req, res, next) => {
-apikey = req.query.apikey;
-q = req.query.q
- if(apikey !== key) return res.sendFile(keyinexistente)
- if (!q) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: q"})
- ytSearch(q).then(result => {
+ var cdapikey = req.query.apikey;
+ link = req.query.link          
+if(!cdapikey) return res.json(resposta.semkey)
+ if(cdapikey !== key) return res.sendFile(keyinvalida)
+ if (!link) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o link"})
+ ytDonlodMp3(link).then((akk) => {
 res.json({
 status: true,
 código: 200,
 criador: `${criador}`,
-resultado: result
+api: "ytMP3",
+resultado: akk
 })}).catch(e => {
-res.json({
-msg: `erro no servidor interno`
-})})})
+res.sendFile(error)})})
 
-router.all('/tools/emojimix', async (req, res) => {
-apikey = req.query.apikey;
-e1 = req.query.emoji1;
-e2 = req.query.emoji2;
-if(apikey !== key) return res.sendFile(keyinexistente)
-if (!e1) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: EMOJI1"})
-if (!e2) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: EMOJI2"})
-emojimix_api = `https://infinitybot-api.herokuapp.com/api/lzcanvas/emojimix?emoji1=${e1}&emoji2=${e2}&apikey=lz`
-res.type('png')
-res.send(await getBuffer(emojimix_api))
-})
-
- router.get('/yt/playlink/mp4',  async(req, res, next) => {
- apikey = req.query.apikey;
- link = req.query.link
-if(apikey !== key) return res.sendFile(keyinexistente)
-if (!link) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: LINK"})
-PlayLinkMP4(link).then((resultado) => {
- res.json({
- status: true,
- código: 200,
- criador: `${criador}`,
- resultado: resultado
- })}).catch(e => {
+ router.get('/yt/playlink/mp4', async(req, res, next) => {
+ var cdapikey = req.query.apikey;
+ link = req.query.link          
+if(!cdapikey) return res.json(resposta.semkey)
+ if(cdapikey !== key) return res.sendFile(keyinvalida)
+ if (!link) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o link"})
+ ytDonlodMp4(link).then((akk) => {
 res.json({
- msg: `erro no servidor interno`
- })})})
+status: true,
+código: 200,
+criador: `${criador}`,
+api: "ytMP4",
+resultado: akk
+})}).catch(e => {
+res.sendFile(error)})})
+
+ router.get('/yt/playmp3', async(req, res, next) => {
+ var cdapikey = req.query.apikey;
+ musica = req.query.musica
+if(!cdapikey) return res.json(resposta.semkey)
+ if(cdapikey !== key) return res.sendFile(keyinvalida)
+ if (!musica) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o nome de uma musica valida"})
+ ytPlayMp3(musica).then((akk) => {
+res.json({
+status: true,
+código: 200,
+criador: `${criador}`,
+api: "PlayMP3",
+resultado: akk
+})}).catch(e => {
+res.sendFile(error)})})
 
  router.get('/yt/playmp4', async(req, res, next) => {
-apikey = req.query.apikey;
-q = req.query.q
-if(apikey !== key) return res.sendFile(keyinexistente)
-if (!q) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: q"})
-PlayVideo(q).then((resultado) => {
- res.json({
- status: true,
- código: 200,
- criador: `${criador}`,
- resultado: resultado
- })}).catch(e => {
+ var cdapikey = req.query.apikey;
+ musica = req.query.musica
+if(!cdapikey) return res.json(resposta.semkey)
+ if(cdapikey !== key) return res.sendFile(keyinvalida)
+ if (!musica) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o nome de uma musica valida"})
+ ytPlayMp4(musica).then((akk) => {
 res.json({
- msg: `erro no servidor interno`
- })})})
+status: true,
+código: 200,
+criador: `${criador}`,
+api: "PlayMP4",
+resultado: akk
+})}).catch(e => {
+res.sendFile(error)})})
 
 router.get('/others/tradutor', async(req, res, next) => {
   var cdapikey = req.query.apikey;
@@ -773,7 +761,7 @@ texto2 = req.query.texto2
 
  router.get('/textpro/neon3d-logo', async(req, res, next) => {
   var cdapikey = req.query.apikey;
-  let { texto } = req.query.texto
+  let { texto } = req.query
  if(!cdapikey) return res.json(resposta.semkey)
   if(cdapikey !== key) return res.sendFile(keyinvalida)
   if (!texto) return res.json({ status : false, criador : `criador`, mensagem : "Coloque Um Texto Valido"})
