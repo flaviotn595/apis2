@@ -250,7 +250,7 @@ router.get('/others/fazernick', async(req, res, next) => {
  if(!cdapikey) return res.json(resposta.semkey)
   if(cdapikey !== key) return res.sendFile(keyinvalida)
   if (!nome) return res.json({ status : false, criador : `criador`, mensagem : "Coloque Um Nome Valido"})
-  fetch(`http://aleatoryapi.herokuapp.com/api/fazernick?nome=${nome}&apikey=ale203`)
+  fetch(`https://lzmods-api.tk/api/tools/fazernick?q=${nome}&apikey=lz`)
   .then(e => e.json())
   .then(e => {
     res.json({
@@ -577,14 +577,16 @@ router.get('/search/pinterest', async(req, res, next) => {
     })})
 });
 
-router.all('/download/tiktok', async (req, res) => {
-apikey = req.query.apikey;
-linkk = req.query.link;
-if(apikey !== key) return res.sendFile(keyinexistente)
-if (!linkk) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: link"})
-tiktok_api = `http://lzmods-api.tk/api/medias-sociais/tiktok_v2?link=${link}&apikey=lz`
+router.all('/download/tiktok', async(req, res, next) => {
+cdapikey = req.query.apikey
+link = req.query.linkk
+if (!link) return res.json({ status : false, criador : `criador`, mensagem : "Coloque Um link Valido"})
+if(!cdapikey) return res.json(resposta.semkey)
+if(cdapikey !== key) return res.sendFile(keyinvalida)
+let tiktok_link = (`http://lzmods-api.tk/api/medias-sociais/tiktok_v2?link=${link}&apikey=lz`)
+let buffer = await getBuffer(tiktok_link)
 res.type('mp4')
-res.send(await getBuffer(tiktok_api))
+res.send(buffer)
 })
 
 router.get('/download/instagram', async(req, res, next) => {
