@@ -577,20 +577,15 @@ router.get('/search/pinterest', async(req, res, next) => {
     })})
 });
 
-router.get('/download/tiktok', async(req, res, next) => {
-  var cdapikey = req.query.apikey;
-  let { link } = req.query
- if(!cdapikey) return res.json(resposta.semkey)
-  if(cdapikey !== key) return res.sendFile(keyinvalida)
-  if (!link) return res.json({ status : false, criador : `criador`, mensagem : "Coloque Um Link De Um Video Valido!"})
-  hx.ttdownloader(link)
-  .then(video => { res.json({
-      status: true,
-      código: 200,
-      criador: `${criador}`,
-      resultado: video
-    })})
-});
+router.all('/download/tiktok', async (req, res) => {
+apikey = req.query.apikey;
+link = req.query.link;
+if(apikey !== key) return res.sendFile(keyinexistente)
+if (!link) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: link"})
+tiktok_api = `http://lzmods-api.tk/api/medias-sociais/tiktok_v2?link=${link}&apikey=lz`
+res.type('mp4')
+res.send(await getBuffer(tiktok_api))
+})
 
 router.get('/download/instagram', async(req, res, next) => {
   var cdapikey = req.query.apikey;
