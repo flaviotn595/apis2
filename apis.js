@@ -579,9 +579,9 @@ router.get('/search/pinterest', async(req, res, next) => {
 
 router.all('/download/tiktok', async (req, res) => {
 apikey = req.query.apikey;
-link = req.query.link;
+linkk = req.query.link;
 if(apikey !== key) return res.sendFile(keyinexistente)
-if (!link) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: link"})
+if (!linkk) return res.json({ status : false, criador : `criador`, mensagem : "Coloque o parametro: link"})
 tiktok_api = `http://lzmods-api.tk/api/medias-sociais/tiktok_v2?link=${link}&apikey=lz`
 res.type('mp4')
 res.send(await getBuffer(tiktok_api))
